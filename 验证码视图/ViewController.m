@@ -7,6 +7,10 @@
 //
 
 #import "ViewController.h"
+#import "SecurityCodeView.h"
+
+#define kScreenWidth  [UIScreen mainScreen].bounds.size.width
+#define kScreenHeight  [UIScreen mainScreen].bounds.size.height
 
 @interface ViewController ()
 
@@ -16,7 +20,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+   
+    SecurityCodeView *securityCode = [[SecurityCodeView alloc]initWithFrame:CGRectMake(0, 100, kScreenWidth, 40)];
+    securityCode.codeStr = ^(NSString *string){
+        NSLog(@"== %@",string);
+    };
+    [self.view addSubview:securityCode];
+    
 }
 
 - (void)didReceiveMemoryWarning {
